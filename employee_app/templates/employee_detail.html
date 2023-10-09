@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-4">
+    <h2>Detalle del Empleado: {{ employee.name }}</h2>
+
+    <div class="alert alert-info">
+        <strong>Total de horas trabajadas esta semana:</strong> {{ total_hours_week }} hrs
+    </div>
+
+
+    <h3>Información del Empleado:</h3>
+    <ul>
+        <li>Nombre: {{ employee.name }}</li>
+        <li>Correo Electrónico: {{ employee.email }}</li>
+        <!-- Agrega más campos según tu modelo de empleado -->
+    </ul>
+
+    <h3>Registros de Tiempo:</h3>
+    <table class="table table-dark table-bordered text-center">
+        <thead class="table-secondary text-dark">
+            <tr>
+                <th>Fecha</th>
+                <th>Hora de Ingreso</th>
+                <th>Hora de Salida</th>
+                <th>Tiempo de Almuerzo</th>
+                <!-- Puedes agregar más columnas según tu modelo de TimeRecord -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in time_records %}
+            <tr>
+                <td>{{ record.date }}</td>
+                <td>{{ record.time_in }}</td>
+                <td>{{ record.time_out }}</td>
+                <td>{{ record.lunch_time }}</td>
+                <!-- Agrega más columnas según tu modelo de TimeRecord -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

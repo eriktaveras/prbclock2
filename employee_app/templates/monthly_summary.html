@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-4">
+    <h2 class="text-white">Resumen Mensual - {{ month }}/{{ year }}</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label for="monthSelect" class="form-label text-white">Seleccione un mes:</label>
+            <select class="form-select" id="monthSelect" onchange="changeMonth()">
+                <option value="" selected>Seleccione un mes</option>
+                <option value="{% url 'monthly_summary' year=year month=1 %}">Enero</option>
+                <option value="{% url 'monthly_summary' year=year month=2 %}">Febrero</option>
+                <option value="{% url 'monthly_summary' year=year month=3 %}">Marzo</option>
+                <option value="{% url 'monthly_summary' year=year month=4 %}">Abril</option>
+                <option value="{% url 'monthly_summary' year=year month=5 %}">Mayo</option>
+                <option value="{% url 'monthly_summary' year=year month=6 %}">Junio</option>
+                <option value="{% url 'monthly_summary' year=year month=7 %}">Julio</option>
+                <option value="{% url 'monthly_summary' year=year month=8 %}">Agosto</option>
+                <option value="{% url 'monthly_summary' year=year month=9 %}">Septiembre</option>
+                <option value="{% url 'monthly_summary' year=year month=10 %}">Octubre</option>
+                <option value="{% url 'monthly_summary' year=year month=11 %}">Noviembre</option>
+                <option value="{% url 'monthly_summary' year=year month=12 %}">Diciembre</option>
+            </select>
+
+            <script>
+                function changeMonth() {
+                    var selectedMonth = document.getElementById("monthSelect").value;
+                    if (selectedMonth) {
+                        window.location.href = selectedMonth;
+                    }
+                }
+            </script>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-dark table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Empleado</th>
+                    <th scope="col">Horas Totales Trabajadas</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in summary_data %}
+                <tr>
+<td>{{ data.employee }}</td>
+                    <td>{{ data.total_hours }} hrs</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="2" class="text-center">No hay datos disponibles</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <a href="{% url 'home' %}" class="btn btn-primary">Volver a Inicio</a>
+</div>
+{% endblock %}

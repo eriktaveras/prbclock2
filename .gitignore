@@ -1,0 +1,51 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyc
+
+# Django files
+*.sqlite3
+db.sqlite3
+*.env
+local_settings.py
+
+# Media Files
+media/
+
+# Static Files
+staticfiles/
+
+# Caches
+*.cache/
+.cache/
+.cache/*
+# IDE - PyCharm, VSCode, etc.
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Virtualenv
+*.venv
+venv/
+ENV/
+
+# Pytest
+.pytest_cache/
